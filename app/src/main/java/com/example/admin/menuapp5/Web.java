@@ -19,8 +19,6 @@ public class Web extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        //returning our layout file
-        //change R.layout.yourlayoutfilename for each of your fragments
         view = inflater.inflate(R.layout.fragment_menu_web, container, false);
         wv = (WebView) view.findViewById(R.id.webView);
 
@@ -31,8 +29,6 @@ public class Web extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
-
         if(savedInstanceState != null)
             wv.restoreState(savedInstanceState);
         else{
@@ -44,8 +40,8 @@ public class Web extends android.support.v4.app.Fragment {
 
     }
 
-    @Override
+    /*@Override
     public void onSaveInstanceState(Bundle outState) {
         wv.saveState(outState);
-    }
+    }*/
 }

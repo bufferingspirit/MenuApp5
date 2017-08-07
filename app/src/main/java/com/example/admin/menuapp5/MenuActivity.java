@@ -1,11 +1,7 @@
 package com.example.admin.menuapp5;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -47,7 +43,6 @@ public class MenuActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -76,28 +71,34 @@ public class MenuActivity extends AppCompatActivity
 
     private void displaySelectedScreen(int itemId){
         Fragment fragment = null;
+        boolean flag = false;
+        String tag = "";
 
         switch(itemId) {
             case R.id.nav_camera:
                 fragment = new Camera();
+                flag = true;
+                tag = "camera";
                 break;
             case R.id.nav_music:
                 fragment = new Music();
+                flag = true;
+                tag = "music";
                 break;
             case R.id.nav_web:
                 fragment = new Web();
+                flag = true;
+                tag = "web";
                 break;
             case R.id.nav_calculator:
                 fragment = new Calculator();
+                flag = true;
+                tag = "calculator";
                 break;
         }
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
+        if (flag) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(tag).commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
